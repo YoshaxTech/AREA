@@ -1,0 +1,2 @@
+# AREA
+epitech project AREA
