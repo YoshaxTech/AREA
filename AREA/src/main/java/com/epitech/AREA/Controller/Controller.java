@@ -19,13 +19,13 @@ public class Controller {
         return facebookService.createFacebookAuthorizationURL();
     }
 
-    @GetMapping("/facebook")
-    public void createFacebookAccessToken(@RequestParam("code") String code) {
-        facebookService.createFacebookAccessToken(code);
+    @GetMapping("/getName")
+    public String getNameResponse(){
+        return facebookService.getName();
     }
 
-        @GetMapping("/getName")
-        public String getNameResponse(){
-            return facebookService.getName();
-        }
+    @GetMapping("/facebook")
+    public void createFacebookAccessToken(@RequestParam("code") String code){
+        facebookService.createFacebookAccessToken(code);
+    }
 }

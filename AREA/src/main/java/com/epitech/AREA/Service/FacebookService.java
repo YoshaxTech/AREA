@@ -16,8 +16,7 @@ public class FacebookService {
     String facebookAppId;
     @Value("${spring.social.facebook.appSecret}")
     String facebookSecret;
-
-    String accessToken = null;
+    private String accessToken;
 
     public String createFacebookAuthorizationURL(){
         FacebookConnectionFactory connectionFactory = new FacebookConnectionFactory(facebookAppId, facebookSecret);
@@ -33,12 +32,12 @@ public class FacebookService {
         AccessGrant accessGrant = connectionFactory.getOAuthOperations().exchangeForAccess(code, "http://localhost:8080/facebook", null);
         accessToken = accessGrant.getAccessToken();
     }
-
     public String getName() {
         Facebook facebook = new FacebookTemplate(accessToken);
         String[] fields = {"id", "name"};
-       User user = facebook.fetchObject("me", User.class);
+        User user = facebook.fetchObject("me", User.class);
 
-       return user.getName();
+        return user.getName();
     }
+
 }
